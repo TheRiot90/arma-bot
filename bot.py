@@ -36,16 +36,16 @@ async def status(ctx):
     status_output, error_output = await arma_status.communicate()
     status_output = status_output.decode()
     error_output = error_output.decode()
-    if not status_output:
-        print("Nothing to show")
-    if len(status_output) > 2000:
-        await ctx.send(status_output[:2000])
-    else:
-        await ctx.send(status_output)
-    if len(error_output) > 2000:
-        await ctx.send(error_output[:2000])
-    else:
-        await ctx.send(error_output)
+    if status_output:
+        if len(status_output) > 2000:
+            await ctx.send(status_output[:2000])
+        else:
+            await ctx.send(status_output)
+    if error_output:
+        if len(error_output) > 2000:
+            await ctx.send(error_output[:2000])
+        else:
+            await ctx.send(error_output)
 
 
 bot.run(discord_key)
