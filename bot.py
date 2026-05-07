@@ -27,6 +27,7 @@ async def on_ready():
 
 
 @bot.command()
+@commands.has_role("Admin")
 async def status(ctx):
     arma_status = await asyncio.create_subprocess_shell(
         "sudo systemctl status arma3server.service",
