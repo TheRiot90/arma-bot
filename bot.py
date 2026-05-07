@@ -1,3 +1,4 @@
+import asyncio
 import os
 
 import discord
@@ -5,6 +6,7 @@ from discord.ext import commands
 from dotenv import load_dotenv
 
 load_dotenv()
+
 
 discord_key = os.getenv("API_KEY")
 
@@ -15,6 +17,7 @@ if not discord_key:
 intents = discord.Intents.default()
 intents.message_content = True
 
+
 bot = commands.Bot(command_prefix="!", intents=intents)
 
 
@@ -24,8 +27,25 @@ async def on_ready():
 
 
 @bot.command()
-async def ping(ctx):
-    await ctx.send("pong")
+async def status(ctx):
+    arma_status = await asyncio.create_subprocess_shell(
+        "sudo systemctl status arma3server.service",
+        stdout=asyncio.subprocess.PIPE,
+        stderr=asyncio.subprocess.PIPE,
+    )
+    status_output, error_output = await arma_status.communicate()
+    status_output = status_output.decode()
+    error_output = error_output.decode()
+    if not status_output:
+        print("Nothing to show")
+    if len(status_output) > 2000:
+        await ctx.send(status_output[:2000])
+    else:
+        await ctx.send(status_output)
+    if len(error_output) > 2000:
+        await ctx.send(error_output[:2000])
+    else:
+        await ctx.send(error_output)
 
 
 bot.run(discord_key)
