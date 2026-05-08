@@ -29,6 +29,9 @@ async def on_ready():
 @bot.command()
 @commands.has_role("Arma Admins")
 async def status(ctx):
+    if ctx.channel.name != "arma-3-server":
+        await ctx.send("This command can only be used in #arma-controls")
+        return
     arma_status = await asyncio.create_subprocess_shell(
         "sudo systemctl status arma3server.service",
         stdout=asyncio.subprocess.PIPE,
@@ -52,6 +55,9 @@ async def status(ctx):
 @bot.command()
 @commands.has_role("Arma Admins")
 async def stop(ctx):
+    if ctx.channel.name != "arma-3-server":
+        await ctx.send("This command can only be used in #arma-controls")
+        return
     arma_status = await asyncio.create_subprocess_shell(
         "sudo systemctl stop arma3server.service",
         stdout=asyncio.subprocess.PIPE,
@@ -75,6 +81,9 @@ async def stop(ctx):
 @bot.command()
 @commands.has_role("Arma Admins")
 async def restart(ctx):
+    if ctx.channel.name != "arma-3-server":
+        await ctx.send("This command can only be used in #arma-controls")
+        return
     arma_status = await asyncio.create_subprocess_shell(
         "sudo systemctl restart arma3server.service",
         stdout=asyncio.subprocess.PIPE,
@@ -98,6 +107,9 @@ async def restart(ctx):
 @bot.command()
 @commands.has_role("Arma Admins")
 async def start(ctx):
+    if ctx.channel.name != "arma-3-server":
+        await ctx.send("This command can only be used in #arma-controls")
+        return
     arma_status = await asyncio.create_subprocess_shell(
         "sudo systemctl start arma3server.service",
         stdout=asyncio.subprocess.PIPE,
