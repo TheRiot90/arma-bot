@@ -27,7 +27,7 @@ async def on_ready():
 
 
 @bot.command()
-@commands.has_role("Admin")
+@commands.has_role("Arma Admins")
 async def status(ctx):
     arma_status = await asyncio.create_subprocess_shell(
         "sudo systemctl status arma3server.service",
@@ -50,7 +50,7 @@ async def status(ctx):
 
 
 @bot.command()
-@commands.has_role("Admin")
+@commands.has_role("Arma Admins")
 async def stop(ctx):
     arma_status = await asyncio.create_subprocess_shell(
         "sudo systemctl stop arma3server.service",
@@ -73,7 +73,7 @@ async def stop(ctx):
 
 
 @bot.command()
-@commands.has_role("Admin")
+@commands.has_role("Arma Admins")
 async def restart(ctx):
     arma_status = await asyncio.create_subprocess_shell(
         "sudo systemctl restart arma3server.service",
@@ -96,7 +96,7 @@ async def restart(ctx):
 
 
 @bot.command()
-@commands.has_role("Admin")
+@commands.has_role("Arma Admins")
 async def start(ctx):
     arma_status = await asyncio.create_subprocess_shell(
         "sudo systemctl start arma3server.service",
