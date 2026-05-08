@@ -49,4 +49,73 @@ async def status(ctx):
             await ctx.send(error_output)
 
 
+@bot.command()
+@commands.has_role("Admin")
+async def stop(ctx):
+    arma_status = await asyncio.create_subprocess_shell(
+        "sudo systemctl stop arma3server.service",
+        stdout=asyncio.subprocess.PIPE,
+        stderr=asyncio.subprocess.PIPE,
+    )
+    status_output, error_output = await arma_status.communicate()
+    status_output = status_output.decode()
+    error_output = error_output.decode()
+    if status_output:
+        if len(status_output) > 2000:
+            await ctx.send(status_output[:2000])
+        else:
+            await ctx.send(status_output)
+    if error_output:
+        if len(error_output) > 2000:
+            await ctx.send(error_output[:2000])
+        else:
+            await ctx.send(error_output)
+
+
+@bot.command()
+@commands.has_role("Admin")
+async def restart(ctx):
+    arma_status = await asyncio.create_subprocess_shell(
+        "sudo systemctl restart arma3server.service",
+        stdout=asyncio.subprocess.PIPE,
+        stderr=asyncio.subprocess.PIPE,
+    )
+    status_output, error_output = await arma_status.communicate()
+    status_output = status_output.decode()
+    error_output = error_output.decode()
+    if status_output:
+        if len(status_output) > 2000:
+            await ctx.send(status_output[:2000])
+        else:
+            await ctx.send(status_output)
+    if error_output:
+        if len(error_output) > 2000:
+            await ctx.send(error_output[:2000])
+        else:
+            await ctx.send(error_output)
+
+
+@bot.command()
+@commands.has_role("Admin")
+async def start(ctx):
+    arma_status = await asyncio.create_subprocess_shell(
+        "sudo systemctl start arma3server.service",
+        stdout=asyncio.subprocess.PIPE,
+        stderr=asyncio.subprocess.PIPE,
+    )
+    status_output, error_output = await arma_status.communicate()
+    status_output = status_output.decode()
+    error_output = error_output.decode()
+    if status_output:
+        if len(status_output) > 2000:
+            await ctx.send(status_output[:2000])
+        else:
+            await ctx.send(status_output)
+    if error_output:
+        if len(error_output) > 2000:
+            await ctx.send(error_output[:2000])
+        else:
+            await ctx.send(error_output)
+
+
 bot.run(discord_key)
