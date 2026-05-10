@@ -11,6 +11,7 @@ A Discord bot for controlling an Arma 3 server via Discord commands. Built with 
 - Role restricted commands (Admin only)
 - Channel restricted commands
 - Runs as a systemd service on boot
+- Comming Soon, planned Commands "!modset" & "!backup"
 
 ## Requirements
 
