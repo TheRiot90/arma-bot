@@ -1,5 +1,7 @@
 # Arma 3 Discord Bot
 
+My cousins play on the Arma 3 server I built even when I'm not around — which is great, until something needs restarting or a modset needs switching. Asking them to SSH into a Linux server was never going to work. They're already in Discord every time they play, so that's where the controls should live. This bot gives them a simple interface to check server status, start it if it's down, and stop it when they're done — all without touching the underlying infrastructure. Built with Python and discord.py, restricted to a private admin channel and specific Discord roles so only the right people can run commands.
+
 A Discord bot for controlling an Arma 3 server via Discord commands. Built with Python and discord.py, running as a systemd service on Ubuntu.
 
 ## Features
