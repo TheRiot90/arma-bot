@@ -130,4 +130,107 @@ async def start(ctx):
             await ctx.send(error_output)
 
 
+@bot.command()
+@commands.has_role("Arma Admins")
+async def status(ctx):
+    if ctx.channel.name != "palworld-server":
+        await ctx.send("This command can only be used in #palworld-server")
+        return
+    arma_status = await asyncio.create_subprocess_shell(
+        "sudo systemctl status palworldserver.service",
+        stdout=asyncio.subprocess.PIPE,
+        stderr=asyncio.subprocess.PIPE,
+    )
+    status_output, error_output = await arma_status.communicate()
+    status_output = status_output.decode()
+    error_output = error_output.decode()
+    if status_output:
+        if len(status_output) > 2000:
+            await ctx.send(status_output[:2000])
+        else:
+            await ctx.send(status_output)
+    if error_output:
+        if len(error_output) > 2000:
+            await ctx.send(error_output[:2000])
+        else:
+            await ctx.send(error_output)
+
+@bot.command()
+@commands.has_role("Arma Admins")
+async def stop(ctx):
+    if ctx.channel.name != "palworld-server":
+        await ctx.send("This command can only be used in #palworld-server")
+        return
+    arma_status = await asyncio.create_subprocess_shell(
+        "sudo systemctl stop palworldserver.service",
+        stdout=asyncio.subprocess.PIPE,
+        stderr=asyncio.subprocess.PIPE,
+    )
+    status_output, error_output = await arma_status.communicate()
+    status_output = status_output.decode()
+    error_output = error_output.decode()
+    if status_output:
+        if len(status_output) > 2000:
+            await ctx.send(status_output[:2000])
+        else:
+            await ctx.send(status_output)
+    if error_output:
+        if len(error_output) > 2000:
+            await ctx.send(error_output[:2000])
+        else:
+            await ctx.send(error_output)
+
+
+@bot.command()
+@commands.has_role("Arma Admins")
+async def restart(ctx):
+    if ctx.channel.name != "palworld-server":
+        await ctx.send("This command can only be used in #palworld-server")
+        return
+    arma_status = await asyncio.create_subprocess_shell(
+        "sudo systemctl restart palworldserver.service",
+        stdout=asyncio.subprocess.PIPE,
+        stderr=asyncio.subprocess.PIPE,
+    )
+    status_output, error_output = await arma_status.communicate()
+    status_output = status_output.decode()
+    error_output = error_output.decode()
+    if status_output:
+        if len(status_output) > 2000:
+            await ctx.send(status_output[:2000])
+        else:
+            await ctx.send(status_output)
+    if error_output:
+        if len(error_output) > 2000:
+            await ctx.send(error_output[:2000])
+        else:
+            await ctx.send(error_output)
+
+
+@bot.command()
+@commands.has_role("Arma Admins")
+async def start(ctx):
+    if ctx.channel.name != "palworld-server":
+        await ctx.send("This command can only be used in #palworld-server")
+        return
+    arma_status = await asyncio.create_subprocess_shell(
+        "sudo systemctl start palworldserver.service",
+        stdout=asyncio.subprocess.PIPE,
+        stderr=asyncio.subprocess.PIPE,
+    )
+    status_output, error_output = await arma_status.communicate()
+    status_output = status_output.decode()
+    error_output = error_output.decode()
+    if status_output:
+        if len(status_output) > 2000:
+            await ctx.send(status_output[:2000])
+        else:
+            await ctx.send(status_output)
+    if error_output:
+        if len(error_output) > 2000:
+            await ctx.send(error_output[:2000])
+        else:
+            await ctx.send(error_output)
+
+
 bot.run(discord_key)
