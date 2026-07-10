@@ -132,7 +132,7 @@ async def start(ctx):
 
 @bot.command()
 @commands.has_role("Arma Admins")
-async def status(ctx):
+async def pstatus(ctx):
     if ctx.channel.name != "palworld-server":
         await ctx.send("This command can only be used in #palworld-server")
         return
@@ -157,7 +157,7 @@ async def status(ctx):
 
 @bot.command()
 @commands.has_role("Arma Admins")
-async def stop(ctx):
+async def pstop(ctx):
     if ctx.channel.name != "palworld-server":
         await ctx.send("This command can only be used in #palworld-server")
         return
@@ -183,7 +183,7 @@ async def stop(ctx):
 
 @bot.command()
 @commands.has_role("Arma Admins")
-async def restart(ctx):
+async def prestart(ctx):
     if ctx.channel.name != "palworld-server":
         await ctx.send("This command can only be used in #palworld-server")
         return
@@ -209,7 +209,7 @@ async def restart(ctx):
 
 @bot.command()
 @commands.has_role("Arma Admins")
-async def start(ctx):
+async def pstart(ctx):
     if ctx.channel.name != "palworld-server":
         await ctx.send("This command can only be used in #palworld-server")
         return
